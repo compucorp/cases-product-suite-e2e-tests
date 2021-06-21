@@ -1,5 +1,4 @@
 import { Page, Response } from 'playwright';
-import BrowserService from '../../services/utils/browser.service';
 import Configs from '../../services/utils/configs.service';
 
 /**
@@ -7,13 +6,6 @@ import Configs from '../../services/utils/configs.service';
  */
 export default abstract class BasePage {
   siteName: string = Configs.getSiteConfig().site_name;
-
-  /**
-   * @param browser browser object
-   */
-  constructor (public browser: BrowserService) {
-    this.browser = browser;
-  }
 
   /**
    * @param page page object
@@ -32,10 +24,5 @@ export default abstract class BasePage {
   /**
    * @returns page title
    */
-  abstract getPageTitle (): string;
-
-  /**
-   * @returns page title
-   */
-  abstract getPageUrl (): string;
+  abstract getPageUrl (filters?: any): string;
 }

@@ -10,7 +10,7 @@ describe('Case Page Title', function () {
   const CaseType = new CaseTypeService();
 
   beforeEach(async () => {
-    manageCases = new ManageCases(global.browser);
+    manageCases = new ManageCases();
 
     setupCaseTypeIds();
   });
@@ -26,7 +26,7 @@ describe('Case Page Title', function () {
       await manageCases.waitForPageLoad(global.page);
     });
 
-    it('EXT-1295::should show manage cases page title', async () => {
+    it('should show manage cases page title', async () => {
       expect(await global.page.title()).toBe(manageCases.getPageTitle());
     });
   });

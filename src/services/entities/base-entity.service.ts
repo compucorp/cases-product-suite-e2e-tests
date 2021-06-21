@@ -23,7 +23,7 @@ export default abstract class BaseEntityService {
    * @param params parameters
    * @returns created entities
    */
-  create (params: CiviApiParam[]): object[] {
+  create (params: CiviApiParam[]): CiviApiResponseValue[] {
     this.entityIds = [];
 
     const apiCalls = params.map((param: CiviApiParam): CiviApiQuery => {
@@ -34,8 +34,8 @@ export default abstract class BaseEntityService {
       return entity.values[0];
     });
 
-    this.entityIds = apiReturnValue.map((caseType) => {
-      return caseType.id;
+    this.entityIds = apiReturnValue.map((returnVal) => {
+      return returnVal.id;
     });
 
     return apiReturnValue;
@@ -56,8 +56,8 @@ export default abstract class BaseEntityService {
    * Cleanup Entities created by this instance of the class.
    */
   cleanUp (): void {
-    const apiCalls = this.entityIds.map((entityId): [string, string, object] => {
-      return [this.entityName, 'delete', { id: entityId }];
+    const apiCalls = this.entityIds.map((entityId): [string, string, CiviApiParam] => {
+      return [this.entityName, 'delete', { id: entityId, skip_undelete: '1' }];
     });
 
     cvApiBatch(apiCalls);
