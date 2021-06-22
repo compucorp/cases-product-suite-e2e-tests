@@ -8,7 +8,7 @@ describe('Award Page Title', function () {
   let manageApplications: ManageApplications;
 
   beforeEach(async () => {
-    manageApplications = new ManageApplications(global.browser);
+    manageApplications = new ManageApplications();
   });
 
   describe('as admin user', function () {

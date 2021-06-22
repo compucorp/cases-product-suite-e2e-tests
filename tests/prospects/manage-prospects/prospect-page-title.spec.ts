@@ -7,7 +7,7 @@ describe('Prospect Page Title', function () {
   let manageProspects: ManageProspects;
 
   beforeEach(async () => {
-    manageProspects = new ManageProspects(global.browser);
+    manageProspects = new ManageProspects();
   });
 
   describe('as admin user', function () {

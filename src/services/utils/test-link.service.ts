@@ -17,7 +17,7 @@ export default {
   secure: true,
   apiKey: 'ec40068f870aa62e03f6642ef51dc17c',
   projectName: 'Extensions & Modules',
-  testPlanName: 'Cases BVT Test Plan',
+  testPlanName: 'Regression Test Plan:: Cases',
   testPlan: null,
   testlink: null,
   build: null,
